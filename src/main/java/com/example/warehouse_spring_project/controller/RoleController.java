@@ -32,10 +32,15 @@ public class RoleController {
         return roleService.saveRole(role);
     }
 
+    @PutMapping("/{id}") // Добавляем метод для обновления роли
+    public ResponseEntity<Role> updateRole(@PathVariable Long id, @Validated @RequestBody Role roleDetails) {
+        Role updatedRole = roleService.updateRole(id, roleDetails);
+        return ResponseEntity.ok(updatedRole);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRole(@PathVariable Long id) {
         roleService.deleteRole(id);
         return ResponseEntity.noContent().build();
     }
 }
-

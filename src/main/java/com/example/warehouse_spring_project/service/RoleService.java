@@ -29,4 +29,13 @@ public class RoleService {
     public Role getRoleById(Long id) {
         return roleRepository.findById(id).orElse(null);
     }
+
+    public Role updateRole(Long id, Role roleDetails) {
+        Role existingRole = roleRepository.findById(id).orElse(null);
+        if (existingRole != null) {
+            existingRole.setName(roleDetails.getName()); // Предположим, у вас есть поле 'name' в Role
+            return roleRepository.save(existingRole);
+        }
+        return null; // или выбросьте исключение, если хотите
+    }
 }

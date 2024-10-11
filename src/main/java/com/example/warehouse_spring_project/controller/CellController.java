@@ -32,6 +32,7 @@ public class CellController {
         return cellService.saveCell(cell);
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCell(@PathVariable Long id) {
         cellService.deleteCell(id);
